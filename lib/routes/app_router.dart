@@ -10,5 +10,6 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: ArticleDetailRoute.page),
         AutoRoute(page: FullRouteImage.page),
         AutoRoute(page: OfflineRoute.page),
+        AutoRoute(page: FavouriteArticleView.page),
       ];
 }

@@ -1,17 +1,17 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_challenge/foundation/constants/text_constant.dart';
-import 'package:flutter_challenge/foundation/utilities/custom_snackbar_util.dart';
 import 'package:flutter_challenge/foundation/theme/app_color.dart';
 import 'package:flutter_challenge/gen/assets.gen.dart';
 import 'package:flutter_challenge/foundation/extensions/text_style_extension.dart';
 
 class AircleDetailAppBar extends StatelessWidget
     implements PreferredSizeWidget {
-  const AircleDetailAppBar({super.key});
-
+  const AircleDetailAppBar(
+      {super.key, required this.favouriteIcon, required this.onPressed});
+  final Widget favouriteIcon;
+  final Function() onPressed;
   @override
   Widget build(BuildContext context) {
-  
     return AppBar(
       centerTitle: true,
       backgroundColor: AppColor.secondary,
@@ -23,16 +23,14 @@ class AircleDetailAppBar extends StatelessWidget
         },
       ),
       title: Text(
-       AppTextConstants.articleDetail,
+        AppTextConstants.articleDetail,
         style: Theme.of(context).textTheme.labelLarge!.w400.s16.primary,
       ),
       actions: [
         IconButton(
           padding: const EdgeInsets.only(right: 24),
-          icon: Assets.svg.heart.svg(),
-          onPressed: () {
-            CustomSnackbarUtils.showFeatureNotAvailable(context);
-          },
+          icon: favouriteIcon,
+          onPressed: onPressed,
         ),
       ],
     );
