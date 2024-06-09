@@ -1,20 +1,17 @@
 import 'package:flutter/material.dart';
-import 'package:flutter_challenge/foundation/constants/text_constant.dart';
+import 'package:flutter_challenge/foundation/extensions/text_style_extension.dart';
 import 'package:flutter_challenge/foundation/theme/app_color.dart';
 
 class CustomSnackbarUtils {
-  static void showFeatureNotAvailable(BuildContext context) {
+  static void showCustomSnackBar({ required BuildContext context,required String message}) {
     ScaffoldMessenger.of(context).showSnackBar(
-      const SnackBar(
+       SnackBar(
         content: Text(
-          AppTextConstants.featureNotAvailable,
-          style: TextStyle(
-            color: Colors.white,
-            fontSize: 16.0,
-          ),
+          message,
+           style: Theme.of(context).textTheme.labelLarge!.w700.s16.primary,
         ),
-        backgroundColor: AppColor.black,
-        duration: Duration(seconds: 2),
+        backgroundColor: AppColor.secondary,
+        duration: const Duration(seconds: 2),
       ),
     );
   }
